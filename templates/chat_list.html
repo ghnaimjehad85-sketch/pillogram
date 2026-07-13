@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Pillogram Messages</title>
+
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial;
+}
+
+
+body{
+
+margin:0;
+
+min-height:100vh;
+
+background:linear-gradient(135deg,#111827,#2563eb);
+
+}
+
+
+
+.container{
+
+width:95%;
+
+max-width:600px;
+
+margin:auto;
+
+padding:20px 15px 90px;
+
+}
+
+
+
+.header{
+
+color:white;
+
+text-align:center;
+
+font-size:28px;
+
+font-weight:bold;
+
+margin:20px 0;
+
+}
+
+
+
+
+.card{
+
+background:rgba(255,255,255,.15);
+
+backdrop-filter:blur(15px);
+
+border-radius:25px;
+
+padding:20px;
+
+}
+
+
+
+
+.user{
+
+background:white;
+
+border-radius:20px;
+
+padding:15px;
+
+margin-bottom:15px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+
+
+
+.info{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+
+
+.avatar{
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+background:#ddd;
+
+object-fit:cover;
+
+}
+
+
+
+
+.name{
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+
+
+
+.chat-btn{
+
+text-decoration:none;
+
+background:#2563eb;
+
+color:white;
+
+padding:10px 18px;
+
+border-radius:20px;
+
+}
+
+
+
+.empty{
+
+color:white;
+
+text-align:center;
+
+padding:30px;
+
+font-size:18px;
+
+}
+
+
+
+
+.nav{
+
+position:fixed;
+
+bottom:0;
+
+left:0;
+
+right:0;
+
+height:70px;
+
+background:white;
+
+display:flex;
+
+justify-content:space-around;
+
+align-items:center;
+
+border-radius:25px 25px 0 0;
+
+}
+
+
+
+.nav a{
+
+text-decoration:none;
+
+color:#2563eb;
+
+font-size:22px;
+
+text-align:center;
+
+}
+
+
+
+.nav span{
+
+display:block;
+
+font-size:12px;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="container">
+
+
+<div class="header">
+
+💬 الرسائل
+
+</div>
+
+
+
+
+<div class="card">
+
+
+
+{% if users %}
+
+
+
+{% for user in users %}
+
+
+
+<div class="user">
+
+
+
+<div class="info">
+
+
+
+{% if user.profile_image %}
+
+<img class="avatar" src="/static/profiles/{{user.profile_image}}">
+
+{% else %}
+
+<div class="avatar"></div>
+
+{% endif %}
+
+
+
+<div class="name">
+
+{{user.username}}
+
+</div>
+
+
+
+</div>
+
+
+
+
+<a class="chat-btn" href="/messages/{{user.id}}">
+
+مراسلة 💬
+
+</a>
+
+
+
+</div>
+
+
+
+{% endfor %}
+
+
+
+{% else %}
+
+
+
+<div class="empty">
+
+لا توجد محادثات حاليا
+
+</div>
+
+
+
+{% endif %}
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="nav">
+
+
+<a href="/">
+🏠
+<span>
+الرئيسية
+</span>
+</a>
+
+
+
+<a href="/search">
+🔍
+<span>
+بحث
+</span>
+</a>
+
+
+
+<a href="/create_post">
+➕
+<span>
+إنشاء
+</span>
+</a>
+
+
+
+<a href="/chat_list">
+💬
+<span>
+الرسائل
+</span>
+</a>
+
+
+
+</div>
+
+
+
+</body>
+
+</html>
